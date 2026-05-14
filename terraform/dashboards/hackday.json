@@ -52,7 +52,8 @@
                       },
                       "spec": {
                         "scenarioId": "csv_metric_values",
-                        "stringInput": "99.8, 99.9, 100, 99.95, 100, 99.99"
+                        "stringInput": "99.8, 99.9, 100, 99.95, 100, 99.99",
+                        "alias": " "
                       }
                     },
                     "refId": "A",
@@ -70,7 +71,7 @@
             "version": "13.1.0-25668120414",
             "spec": {
               "options": {
-                "colorMode": "none",
+                "colorMode": "background",
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "horizontal",
@@ -117,7 +118,7 @@
         "kind": "Panel",
         "spec": {
           "id": 2,
-          "title": "Active User Traffice (Rate)",
+          "title": "Active User Traffic (Rate)",
           "description": "",
           "links": [],
           "data": {
@@ -137,7 +138,8 @@
                       "spec": {
                         "scenarioId": "random_walk",
                         "seriesCount": 1,
-                        "startValue": 500
+                        "startValue": 500,
+                        "alias": " "
                       }
                     },
                     "refId": "A",
@@ -234,7 +236,8 @@
                         "scenarioId": "random_walk",
                         "seriesCount": 1,
                         "spread": 0.5,
-                        "startValue": 1
+                        "startValue": 1,
+                        "alias": " "
                       }
                     },
                     "refId": "A",
@@ -327,14 +330,11 @@
                         "name": "TestData"
                       },
                       "spec": {
-                        "pulseWave": {
-                          "offCount": 3,
-                          "offValue": 1,
-                          "onCount": 3,
-                          "onValue": 2,
-                          "timeStep": 60
-                        },
-                        "scenarioId": "predictable_pulse"
+                        "scenarioId": "random_walk",
+                        "startValue": 150,
+                        "min": 50,
+                        "spread": 10,
+                        "alias": "Latency"
                       }
                     },
                     "refId": "A",
@@ -396,7 +396,7 @@
                     "barAlignment": 0,
                     "barWidthFactor": 0.6,
                     "drawStyle": "line",
-                    "fillOpacity": 17,
+                    "fillOpacity": 20,
                     "gradientMode": "scheme",
                     "hideFrom": {
                       "legend": false,
@@ -404,7 +404,7 @@
                       "viz": false
                     },
                     "insertNulls": false,
-                    "lineInterpolation": "linear",
+                    "lineInterpolation": "smooth",
                     "lineStyle": {
                       "fill": "solid"
                     },
@@ -455,7 +455,8 @@
                       "spec": {
                         "scenarioId": "random_walk",
                         "seriesCount": 1,
-                        "startValue": 1000
+                        "startValue": 1000,
+                        "alias": "200 OK"
                       }
                     },
                     "refId": "A",
@@ -475,7 +476,8 @@
                       "spec": {
                         "scenarioId": "random_walk",
                         "seriesCount": 1,
-                        "startValue": 10
+                        "startValue": 10,
+                        "alias": "500 Error"
                       }
                     },
                     "refId": "B",
@@ -536,8 +538,8 @@
                     "axisPlacement": "auto",
                     "barAlignment": 0,
                     "barWidthFactor": 0.9,
-                    "drawStyle": "line",
-                    "fillOpacity": 50,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
                     "gradientMode": "none",
                     "hideFrom": {
                       "legend": false,
@@ -549,7 +551,7 @@
                     "lineStyle": {
                       "fill": "solid"
                     },
-                    "lineWidth": 2,
+                    "lineWidth": 1,
                     "pointSize": 1,
                     "scaleDistribution": {
                       "type": "linear"
@@ -566,7 +568,38 @@
                     }
                   }
                 },
-                "overrides": []
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "200 OK"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "green",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "500 Error"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "red",
+                          "mode": "fixed"
+                        }
+                      }
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -598,7 +631,8 @@
                         "min": 10,
                         "scenarioId": "random_walk",
                         "spread": 5,
-                        "startValue": 50
+                        "startValue": 50,
+                        "alias": "CPU Load"
                       }
                     },
                     "refId": "A",
@@ -721,7 +755,8 @@
                       },
                       "spec": {
                         "scenarioId": "csv_metric_values",
-                        "stringInput": "20, 22, 25, 29, 35, 42, 55, 70, 85, 95, 15"
+                        "stringInput": "20, 22, 25, 29, 35, 42, 55, 70, 85, 95, 15",
+                        "alias": "RAM"
                       }
                     },
                     "refId": "A",
