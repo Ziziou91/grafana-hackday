@@ -14,11 +14,10 @@ resource "grafana_dashboard" "hackday" {
 
   lifecycle {
     replace_triggered_by = [terraform_data.dashboard_json]
+    ignore_changes = [config_json]
   }
 }
 
-# Forces replacement when the dashboard JSON changes, since the v2 API
-# rejects modifications and requires a fresh create instead.
 resource "terraform_data" "dashboard_json" {
   input = filesha256("${path.module}/dashboards/hackday.json")
 }

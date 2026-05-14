@@ -1,0 +1,145 @@
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "hackday-eval-group",
+            "folder": "Hackday Alerts",
+            "interval": "5m",
+            "rules": [
+                {
+                    "uid": "efm1nj5clgni8e",
+                    "title": "CPU Utilization %",
+                    "condition": "C",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 21600,
+                                "to": 0
+                            },
+                            "datasourceUid": "bflygz5msh0cga",
+                            "model": {
+                                "datasource": {
+                                    "type": "grafana-testdata-datasource",
+                                    "uid": "bflygz5msh0cga"
+                                },
+                                "instant": false,
+                                "intervalMs": 1000,
+                                "max": 100,
+                                "maxDataPoints": 43200,
+                                "min": 10,
+                                "range": true,
+                                "refId": "A",
+                                "scenarioId": "random_walk",
+                                "spread": 5,
+                                "startValue": 50
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "queryType": "expression",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": []
+                                        },
+                                        "reducer": {
+                                            "params": [],
+                                            "type": "last"
+                                        },
+                                        "type": "query"
+                                    }
+                                ],
+                                "datasource": {
+                                    "type": "__expr__",
+                                    "uid": "__expr__"
+                                },
+                                "expression": "A",
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "reducer": "last",
+                                "refId": "B",
+                                "type": "reduce"
+                            }
+                        },
+                        {
+                            "refId": "C",
+                            "queryType": "expression",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                90
+                                            ],
+                                            "type": "gte"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "C"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "params": [],
+                                            "type": "last"
+                                        },
+                                        "type": "query"
+                                    }
+                                ],
+                                "datasource": {
+                                    "type": "__expr__",
+                                    "uid": "__expr__"
+                                },
+                                "expression": "B",
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "C",
+                                "type": "threshold"
+                            }
+                        }
+                    ],
+                    "dashboardUid": "maqmrsd",
+                    "panelId": 6,
+                    "noDataState": "NoData",
+                    "execErrState": "Error",
+                    "for": "5m",
+                    "annotations": {
+                        "__dashboardUid__": "maqmrsd",
+                        "__panelId__": "6",
+                        "description": "The client's web application is experiencing a massive CPU spike. Auto-remediation protocols are on standby.",
+                        "summary": "🚨 CRITICAL: CPU Utilization \u003e 90%"
+                    },
+                    "labels": {
+                        "alert_name": ""
+                    },
+                    "isPaused": false,
+                    "notification_settings": {
+                        "receiver": "Google-Chat-Integration"
+                    }
+                }
+            ]
+        }
+    ]
+}
