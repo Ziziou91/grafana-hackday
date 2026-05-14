@@ -14,3 +14,15 @@ variable "dashboard_folder" {
   type        = string
   default     = "Hackday"
 }
+
+variable "jira_webhook_url" {
+  description = "Jira automation incoming webhook URL to create bug tickets"
+  type        = string
+  sensitive   = true
+}
+
+variable "jira_webhook_secret" {
+  description = "Jira automation webhook secret token"
+  type        = string
+  sensitive   = true
+}
