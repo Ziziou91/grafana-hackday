@@ -6,20 +6,19 @@ resource "grafana_folder" "hackday_alerts" {
 resource "grafana_rule_group" "hackday" {
   name             = "hackday-eval-group-v2"
   folder_uid       = grafana_folder.hackday_alerts.uid
-  interval_seconds = 300 # 5m
+  interval_seconds = 60
 
   rule {
-    uid     = "efm1nj5clgni8e"
-    name    = "CPU Utilization %"
-    condition = "C"
-    for     = "5m"
-
+    uid            = "efm1nj5clgni8e"
+    name           = "CPU Utilization %"
+    condition      = "C"
+    for            = "0s"
     no_data_state  = "NoData"
     exec_err_state = "Error"
     is_paused      = false
 
     annotations = {
-      __dashboardUid__ = "ahdbjk" 
+      __dashboardUid__ = "ahdbjk"
       __panelId__      = "6"
       summary          = "🚨 CRITICAL: CPU Utilization > 90%"
       description      = "The client's web application is experiencing a massive CPU spike. Auto-remediation protocols are on standby."
@@ -36,7 +35,7 @@ resource "grafana_rule_group" "hackday" {
     data {
       ref_id = "A"
       relative_time_range {
-        from = 21600
+        from = 600
         to   = 0
       }
       datasource_uid = grafana_data_source.testdata.uid
@@ -45,15 +44,17 @@ resource "grafana_rule_group" "hackday" {
           type = "grafana-testdata-datasource"
           uid  = grafana_data_source.testdata.uid
         }
-        refId        = "A"
-        scenarioId   = "random_walk"
-        startValue   = 50
-        spread       = 5
-        min          = 10
-        max          = 100
-        instant      = false
-        range        = true
-        intervalMs   = 1000
+        refId      = "A"
+        scenarioId = "random_walk"
+
+        # DEMO SABOTAGE POINT: Change this 50 to a 95 during your presentation!
+        startValue    = 50
+        spread        = 5
+        min           = 10
+        max           = 100
+        instant       = false
+        range         = true
+        intervalMs    = 1000
         maxDataPoints = 43200
       })
     }
