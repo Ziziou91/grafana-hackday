@@ -4,3 +4,6 @@
 grafana_url                   = "https://<your-stack>.grafana.net"
 grafana_service_account_token = "<your-service-account-token>"
 dashboard_folder              = "Hackday"
+
+jira_webhook_url    = "https://automation.atlassian.com/pro/hooks/REPLACE_ME"
+jira_webhook_secret = "REPLACE_ME"

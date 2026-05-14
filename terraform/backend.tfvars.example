@@ -1,0 +1,13 @@
+bucket                      = "grafana-hackday-tfstate"
+key                         = "grafana-hackday/terraform.tfstate"
+region                      = "us-east-1"
+access_key                  = "REPLACE_ME"
+secret_key                  = "REPLACE_ME"
+skip_credentials_validation = true
+skip_metadata_api_check     = true
+skip_region_validation      = true
+skip_requesting_account_id  = true
+force_path_style            = true
+endpoints = {
+  s3 = "https://ams1.vultrobjects.com"
+}
