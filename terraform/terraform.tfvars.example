@@ -1,0 +1,6 @@
+# Copy this file to terraform.tfvars and fill in your values.
+# terraform.tfvars is git-ignored — never commit real secrets.
+
+grafana_url                   = "https://<your-stack>.grafana.net"
+grafana_service_account_token = "<your-service-account-token>"
+dashboard_folder              = "Hackday"
