@@ -8,26 +8,19 @@ terraform {
     }
   }
 
-  # backend "s3" {
-  #   # Uncomment and configure this block when you are ready to use Vultr Object Storage for remote state.
-  #   #
-  #   # terraform init \
-  #   #   -backend-config="bucket=<your-bucket-name>" \
-  #   #   -backend-config="key=grafana-hackday/terraform.tfstate" \
-  #   #   -backend-config="endpoint=https://<region>.vultrobjects.com" \
-  #   #   -backend-config="access_key=<vultr-access-key>" \
-  #   #   -backend-config="secret_key=<vultr-secret-key>" \
-  #   #   -backend-config="region=us-east-1"
-  #
-  #   bucket                      = "REPLACE_ME"
-  #   key                         = "grafana-hackday/terraform.tfstate"
-  #   region                      = "us-east-1"
-  #   endpoint                    = "REPLACE_ME"  # e.g. https://ewr1.vultrobjects.com
-  #   skip_credentials_validation = true
-  #   skip_metadata_api_check     = true
-  #   skip_region_validation      = true
-  #   force_path_style            = true
-  # }
+  backend "s3" {
+    bucket                      = "grafana-hackday-tfstate"
+    key                         = "grafana-hackday/terraform.tfstate"
+    region                      = "us-east-1"
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    skip_region_validation      = true
+    skip_requesting_account_id  = true
+    force_path_style            = true
+    endpoints = {
+      s3 = "https://ams1.vultrobjects.com"
+    }
+  }
 }
 
 provider "grafana" {

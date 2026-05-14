@@ -8,6 +8,7 @@ terraform.tfstate.*.backup
 # Variable files containing secrets
 terraform.tfvars
 *.auto.tfvars
+backend.tfvars
 
 # Crash logs
 crash.log
